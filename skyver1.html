@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Skynetwork-EU</title> 
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Russo+One" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="skynet">
+        <h1>SKY-NET</h1>
+    </div>
+</body>
+<style>
+    #skynet
+    h1{
+        font-family: "Russo One", sans-serif;
+        font-weight: 400;
+        font-style: normal; 
+        color: white;
+        font-size: 110px;
+    }
+</style>
+
+
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <style>
+          body {
+              margin: 0;
+              padding: 0;
+              height: 100vh;
+              background-size: cover;
+              background-position: center;
+          }
+      </style>
+  </head>
+  <body>
+      <script>
+          var backgrounds = [
+              'https://cdn.pixabay.com/photo/2023/09/16/14/13/business-8256836_1280.jpg',
+              'https://cdn.pixabay.com/photo/2023/09/16/14/13/business-8256833_1280.jpg',
+              'https://cdn.pixabay.com/photo/2024/02/02/14/27/ai-generated-8548258_1280.jpg',
+              'https://cdn.pixabay.com/photo/2024/02/04/20/51/ai-generated-8553099_1280.jpg',
+              'https://cdn.pixabay.com/photo/2024/02/04/20/51/ai-generated-8553117_1280.jpg',
+              'https://cdn.pixabay.com/photo/2024/02/04/20/51/ai-generated-8553118_1280.jpg',
+              'https://cdn.pixabay.com/photo/2024/02/04/20/51/ai-generated-8553109_1280.jpg',
+              'https://cdn.pixabay.com/photo/2024/01/27/16/57/ai-generated-8536366_1280.jpg',
+              'https://cdn.pixabay.com/photo/2024/01/27/16/57/ai-generated-8536370_960_720.jpg',
+              'https://cdn.pixabay.com/photo/2024/01/27/16/57/ai-generated-8536382_1280.jpg',
+              'https://cdn.pixabay.com/photo/2023/12/03/10/37/ai-generated-8427261_1280.jpg',
+              'https://cdn.pixabay.com/photo/2023/12/03/10/37/ai-generated-8427256_1280.jpg',
+              'https://cdn.pixabay.com/photo/2023/12/03/10/37/ai-generated-8427260_1280.jpg',
+              'https://cdn.pixabay.com/photo/2023/11/16/09/45/quantum-8392053_1280.jpg',
+              'https://cdn.pixabay.com/photo/2023/11/15/18/55/ai-generated-8390797_1280.jpg',
+              'https://cdn.pixabay.com/photo/2023/11/08/22/06/ai-generated-8375879_1280.jpg',
+          ];
+          var randomIndex = Math.floor(Math.random() * backgrounds.length);
+          var selectedBackground = backgrounds[randomIndex];
+          
+          document.body.style.backgroundImage = "url('" + selectedBackground + "')";
+      </script>
+  </body>
+  </html> 
+ <head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <style>
+         .textboxtop {
+                background-color: rgba(0, 0, 0, 0.566);
+                border-radius: 15px;
+                padding: 20px;
+                width: 25%;
+                margin: 0 auto;
+                text-align: center;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.592);
+            }
+     </style>
+ </head>
+    <html>
+    <head>
+        <div class="textboxtop">
+        <script>
+            let generatedCaptcha;
+            let startTime = new Date().getTime();
+    
+            function generateCaptcha() {
+                let randomNumber = Math.floor(Math.random() * 900) + 100; // Generate a 3-digit random number
+                generatedCaptcha = randomNumber.toString().split('').map(num => String.fromCharCode(parseInt(num) + 96)).join(''); // Convert numbers to alphabets
+                
+                document.getElementById('captcha').innerText = generatedCaptcha;
+                document.getElementById('captchaInput').value = '';
+            }
+    
+            function verifyCaptcha() {
+                let input = document.getElementById('captchaInput').value.toLowerCase();
+                
+                if (input === generatedCaptcha.split('').map(letter => letter.charCodeAt(0) - 96).join('')) {
+                    document.getElementById('captchaContainer').style.display = 'none';
+                    
+                    document.getElementById('message').style.display = 'block';
+                    setTimeout(() => {
+                        document.getElementById('message').style.display = 'none';
+                        generateCaptcha();
+                    }, 30000);
+                } else {
+                    generateCaptcha();
+                }
+            }
+    
+            function updateTimer() {
+                let currentTime = new Date().getTime();
+                let elapsedTime = new Date(currentTime - startTime);
+                document.getElementById('timer').innerText = 'Sitzung läuft: ' + elapsedTime.getUTCHours() + 'h ' + elapsedTime.getUTCMinutes() + 'm ' + elapsedTime.getUTCSeconds() + 's';
+            }
+    
+            window.onload = function() {
+                generateCaptcha();
+                setInterval(updateTimer, 1000);
+            };
+        </script>
+    </head>
+    <body>
+        <div id="captchaContainer">
+            <p style="color: rgb(255, 255, 255);">Captcha: <span style="color: rgb(255, 255, 255);" id="captcha"></span></p>
+            <input type="text" id="captchaInput" placeholder="enter captcha">
+            <button onclick="verifyCaptcha()">Verify</button>
+        </div>
+        <br>
+        <div id="message" style="display: none;">
+            <h1> </h1>
+            <style>
+                .form-control {
+                    padding: 10px
+                    border: 2px solid #000001;
+                    border-radius: 5px;
+                    width: 200px;
+
+                }
+            </style>
+            <body>
+                <div class="container vh-100">
+                    <div class="row justify-content-center h-100">
+                        <div class="card w-25 my-auto shadow">
+                            <div class="card-header text-center bg-primary text-white">
+                            </div>
+                            <div class="card-body">
+                                <form action="" method="">
+                                    <div class="form-group">
+                                        <label style="color: white;" for="username">Username:</label>
+                                        <input type="username" id="username" class="form-control" name="" />
+                                    </div><br>
+                                    <div class="form-group">
+                                        <label style="color: white;" for="password">Password:</label>
+                                        <input type="password" id="password" class="form-control" name="" />
+                                    </div><br>
+                                    <input type="submit" class="btn btn-primary w-100" value="Login" name="">
+                                </form>
+                            </div><br><br>
+                            <div class="card-footer text-right">
+                                <small style="color: white;">&copy; SKY-CENTRAL CORP.</small><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </body>
+        </div>
+        <br>
+        <div  style="color: white;" id="timer"></div>
+        </div>
+    </body>
+    </html>
+        <br><br><br><br><br><br><br><br><br><br>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                text-align: center;
+                padding: 20px;
+            }
+            .custom-textunten {
+                font-size: 10px;
+                color: rgb(54, 54, 139);
+            }
+        </style>
+    </head>
+    </body>
+    <html>
+    <head>
+        <style>
+            .textbox {
+                background-color: rgba(0, 0, 0, 0.566);
+                border-radius: 15px;
+                padding: 20px;
+                width: 40%;
+                margin: 0 auto;
+                text-align: center;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.592);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="textbox">
+            <p style="color:white">
+                Emotionen wie Gier und Angst können zu schlechten Handelsentscheidungen führen. <br>
+                Versuche, deine Emotionen im Griff zu behalten und auf rationale Analyse zu setzen. <br>
+                Trading ist ein Lernprozess, also sei geduldig und bleibe am Ball.<br>
+            </p>
+        </div>
+    </body>
+    </html>
+    <br>
+    <body>
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <style>
+                .title22 {
+                    font-size: 15px;
+                    color: rgb(102, 255, 0);
+                    transition: color 0.5s;
+                }
+                .title22:hover {
+                    color: rgb(255, 0, 0);
+                }
+            </style>
+        </head>
+        <body>
+            <h1 class="title22"><span>ONLINE</span></h1>
+        </body>
+        </html>
+   <body>
+    <div style="color: white;" class="custom-textunten">
+        SKY-DEUTSCHLANDSEKTOR VERSION 2.145.730
+    </div>
+    <br>
+    <img src="https://cdn.pixabay.com/photo/2018/12/18/20/42/russia-3883022_960_720.png" height="25"; width="35">
+   </body>
+ </div>
